@@ -13,7 +13,7 @@ check-prepare: mindcurrent
 	./mindcurrent test/params.txt test connection_info2
 	cd test; for f in *; do cp -f  $$f .$$f; done
 
-run: mindcurrent network_compile
+run: mindcurrent
 	./mindcurrent params.txt out connection_info2
 
 doxy:
@@ -22,10 +22,6 @@ doxy:
 clean: 
 	-rm mindcurrent 
 
-network_compile:
+network:
 	g++ -O2 generate_network.cpp -o generate_network
-
-network_generate: network_compile
-    ./generate_network $(network_config) $(mri_network) $(3D_subnet) $(3D_distance)> connection_info2
-
-
+	./generate_network $(network_config) $(3D_subnet) $(3D_distance)> connection_info2
