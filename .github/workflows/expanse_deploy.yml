@@ -12,7 +12,7 @@ jobs:
         with:
          key: ${{ secrets.EXPANSE_KEY }}
          name: id_rsa
-         known_hosts: ${{ secrets.SSH_KEY }}
+         known_hosts: ${{ secrets.SSH_HOST }}
       -  name: Pull
          run: ssh scigap@login.expanse.sdsc.edu "cd /home/scigap/NeuroTest/sleep-stage-transition && /usr/bin/git pull origin main"
           
